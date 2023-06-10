@@ -1,18 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Pre-check') {
-            steps {
-                script {
-                    if (sh(script: 'which docker', returnStatus: true) != 0) {
-                        sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
-                        sh 'sh get-docker.sh'
-                        sh 'sudo usermod -aG docker $USER'
-                        sh 'newgrp docker'
-                    }
-                }
-            }
-        }
         stage('Build images') {
             steps {
                 sh 'docker build -t cmarin001/my-frontend:latest .'
@@ -29,4 +17,3 @@ pipeline {
         }
     }
 }
-
