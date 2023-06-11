@@ -10,7 +10,7 @@ pipeline {
         stage('Push images') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github-docker-credentials', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME')]) {
-                    sh 'sudo docker login ghcr.io -u cmarin001 -p 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'
+                    sh 'sudo docker login ghcr.io -u cmarin001 -p $TOKEN'
                     sh 'sudo docker push ghcr.io/cmarin001/my-frontend:latest'
                 }
             }
