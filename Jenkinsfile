@@ -20,8 +20,8 @@ pipeline {
                 script {
                     def containers = sh(script: 'sudo docker ps -q -f ancestor=cmarin001/my-frontend', returnStdout: true).trim()
                     if (containers) {
-                        sh 'sudo docker stop ${containers}'
-                        sh 'sudo docker rm ${containers}'
+                        sh "sudo docker stop ${containers}"
+                        sh "sudo docker rm ${containers}"
                     }
                 }
             }
@@ -31,8 +31,8 @@ pipeline {
                 script {
                     def conflictingContainer = sh(script: 'sudo docker ps -a -q -f name=my-frontend', returnStdout: true).trim()
                     if (conflictingContainer) {
-                        sh 'sudo docker stop ${conflictingContainer}'
-                        sh 'sudo docker rm ${conflictingContainer}'
+                        sh "sudo docker stop ${conflictingContainer}"
+                        sh "sudo docker rm ${conflictingContainer}"
                     }
                 }
             }
