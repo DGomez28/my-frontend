@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Run new image') {
             steps {
-                sh 'sudo docker run -d --name my-frontend -p 8080:80 ghcr.io/cmarin001/my-frontend:latest'
+                sh 'sudo docker run -d --name my-frontend -p 80:80 ghcr.io/cmarin001/my-frontend:latest'
             }
         }
     }
