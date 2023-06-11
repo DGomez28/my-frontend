@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Build and tag images') {
             steps {
-                sh 'sudo docker build -t ghcr.io/cmarin001/my-frontend:latest .'
-                sh 'sudo docker tag ghcr.io/cmarin001/my-frontend:latest ghcr.io/cmarin001/my-frontend:latest'
+                sh 'sudo docker build -t cmarin001/my-frontend:latest .'
+                sh 'sudo docker tag cmarin001/my-frontend:latest ghcr.io/cmarin001/my-frontend:latest'
             }
         }
         stage('Push images') {
