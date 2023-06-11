@@ -18,7 +18,7 @@ pipeline {
         stage('Clean up old containers') {
             steps {
                 script {
-                    def containers = sh(script: 'sudo docker ps -q -f ancestor=cmarin001/my-frontend', returnStdout: true).trim()
+                    def containers = sh(script: 'sudo docker ps -q -f ancestor=my-frontend', returnStdout: true).trim()
                     if (containers) {
                         sh 'sudo docker stop ${containers}'
                         sh 'sudo docker rm ${containers}'
