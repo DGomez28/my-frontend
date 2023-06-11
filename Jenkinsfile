@@ -18,17 +18,17 @@ pipeline {
         stage('Clean up old containers') {
             steps {
                 script {
-                    def containers = sh(script: 'docker ps -q -f ancestor=cmarin001/my-frontend', returnStdout: true).trim()
+                    def containers = sh(script: 'sudo docker ps -q -f ancestor=cmarin001/my-frontend', returnStdout: true).trim()
                     if (containers) {
-                        sh 'docker stop ${containers}'
-                        sh 'docker rm ${containers}'
+                        sh 'sudo docker stop ${containers}'
+                        sh 'sudo docker rm ${containers}'
                     }
                 }
             }
         }
         stage('Run new image') {
             steps {
-                sh 'docker run -d --name my-frontend -p 8080:80 ghcr.io/cmarin001/my-frontend:latest'
+                sh 'sudo docker run -d --name my-frontend -p 8080:80 ghcr.io/cmarin001/my-frontend:latest'
             }
         }
     }
